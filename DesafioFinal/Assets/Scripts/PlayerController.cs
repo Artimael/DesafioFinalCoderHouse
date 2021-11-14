@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public float lifePlayer;
     [SerializeField] private Animator animPlayer;
     // Start is called before the first frame update
     void Start()
@@ -18,9 +17,6 @@ public class PlayerController : MonoBehaviour
     {
         movePlayer();
         //RotatePlayer();
-        if(lifePlayer<=0f){
-            transform.position=new Vector3(2f,0f,-25f);
-        }
     }
 
     void movePlayer(){
@@ -47,16 +43,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-           GameObject enemy = collision.gameObject;
-           Debug.Log("Enemy: "+enemy);
-           float damageEnemy= enemy.GetComponent<EnemyController>().getDamage();
-           lifePlayer=lifePlayer-damageEnemy;
-           Debug.Log("lifePlayer : "+lifePlayer);
+            transform.position=new Vector3(2f,0.1f,-25f);
         }
 
         if (collision.gameObject.CompareTag("Bala"))
         {
-            transform.position=new Vector3(2f,0f,-25f);
+            transform.position=new Vector3(2f,0.1f,-25f);
         }   
 
         if (collision.gameObject.CompareTag("Piso")){

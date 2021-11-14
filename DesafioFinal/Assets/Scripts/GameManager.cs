@@ -34,10 +34,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void setDifficult(int difficulties){
+        Debug.Log("Difficulties: "+difficulties);
         difficult=difficulties;
     }
 
-    public static int getDifficult(){
+    public int getDifficult(){
+        Debug.Log("difficult: "+difficult);
         return difficult;
     }
 }

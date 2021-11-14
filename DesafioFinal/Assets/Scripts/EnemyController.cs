@@ -11,39 +11,44 @@ public class EnemyController : MonoBehaviour
     private bool esDestino=false;
     private float speed=3.0f;
     private float tiempoColision=0.0f;
-    private float damageEnemy=5.0f;
+    [SerializeField] private float timerEnemy = 0f;
+    [SerializeField] private float MoveCooldown = 5f;
 
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position= new Vector3(Random.Range(1f,3f),0.2f,Random.Range(-5f, 15f));
-        Debug.Log("Inicio Enemy: "+transform.position);
         xRandomPosEnemy = Random.Range(1f,3f);
         ZRandomPosEnemy = Random.Range(-5f, 15f);
         randomVector= new Vector3(xRandomPosEnemy,0,ZRandomPosEnemy);
-        Debug.Log("randomVector Enemy: "+randomVector);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("randomVector Enemy: "+randomVector+ " Inicio Enemy"+transform.position);
         if(!esDestino){
             Vector3 direction = (randomVector - transform.position).normalized;
             transform.position+= speed * direction * Time.deltaTime;
-            //Debug.Log("direction Enemy: "+transform.position);
-            if(transform.position.x == xRandomPosEnemy && transform.position.z == ZRandomPosEnemy){
-                Debug.Log("Llegue");
-                esDestino=true;
-            }
-
         }else{
             xRandomPosEnemy = Random.Range(0f,4f);
             ZRandomPosEnemy = Random.Range(-5f, 15f);
             randomVector= new Vector3(xRandomPosEnemy,0,ZRandomPosEnemy);
             esDestino=false;
         }
+
+        timerEnemy += Time.deltaTime;
+        if(timerEnemy > MoveCooldown)
+        {
+            xRandomPosEnemy = Random.Range(0f,4f);
+            ZRandomPosEnemy = Random.Range(-5f, 15f);
+            randomVector= new Vector3(xRandomPosEnemy,0,ZRandomPosEnemy);
+            esDestino=false;
+            timerEnemy=0f;
+        }     
+
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -76,11 +81,6 @@ public class EnemyController : MonoBehaviour
 
         
     }
-
-    public float getDamage(){
-        return damageEnemy;
-    }
-
 
     
 }

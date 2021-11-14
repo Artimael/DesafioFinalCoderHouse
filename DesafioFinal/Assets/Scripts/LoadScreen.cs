@@ -34,6 +34,7 @@ public class LoadScreen : MonoBehaviour
                     loadingBar.gameObject.SetActive(false);
                     loadingImage.gameObject.SetActive(false);
                     asyncLoad.allowSceneActivation = true;
+                    GameManager.instance.setDifficult(1);
 
                 }
             }

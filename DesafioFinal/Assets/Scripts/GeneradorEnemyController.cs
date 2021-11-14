@@ -9,26 +9,31 @@ public class GeneradorEnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int dificultad=0;
         //InvokeRepeating("spawnEnemy",2.0f,1.5f);
+        if(GameManager.instance!=null){
+        dificultad=GameManager.instance.getDifficult();
+        }
 
+        Debug.Log("Dificultad: "+dificultad);
         switch(difficult){
             case 0://Easy
-                for(int i=0;i<3;i++){
+                for(int i=0;i<15;i++){
                     spawnEnemy();
                 }
             break;
             case 1://Medium
-                for(int i=0;i<10;i++){
+                for(int i=0;i<20;i++){
                     spawnEnemy();
                 }
             break;
             case 2://Hard
-                for(int i=0;i<20;i++){
+                for(int i=0;i<25;i++){
                     spawnEnemy();
                 }
             break; 
             default:
-                for(int i=0;i<10;i++){
+                for(int i=0;i<30;i++){
                     spawnEnemy();
                 }
             break;
