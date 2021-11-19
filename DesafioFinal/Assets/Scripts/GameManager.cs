@@ -8,12 +8,22 @@ public class GameManager : MonoBehaviour
     public static int score;
     public static int difficult;
 
+    public static Queue objetoQueue;
+    public static Dictionary<string, GameObject> objetoDictionary;
+    public static GameObject[] objetoArray;
+    public static int indexObjetoArray = 0;
+
     private void Awake()
     {
+        objetoQueue = new Queue();
+        objetoDictionary = new Dictionary<string, GameObject>();
+        objetoArray = new GameObject[4];
+
         if(instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
         }
         else
         {
@@ -24,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -42,4 +52,35 @@ public class GameManager : MonoBehaviour
         Debug.Log("difficult: "+difficult);
         return difficult;
     }
+
+    public void AddObjeto(GameObject objeto)
+    {
+        objetoQueue.Enqueue(objeto);
+    }
+
+    public GameObject GetObjeto()
+    {
+        return objetoQueue.Dequeue() as GameObject;
+    }
+
+    public void AddDictionary(string key, GameObject objeto)
+    {
+        objetoDictionary.Add(key, objeto);
+    }
+
+    public GameObject GetObjetoDictonary(string key)
+    {
+        return objetoDictionary[key];
+    }
+
+    public void addObjetoArray(GameObject objeto){
+        objetoArray[indexObjetoArray] = objeto;
+        indexObjetoArray++;        
+    }
+
+        public GameObject GetObjetoArray(int index)
+    {
+        return objetoArray[index];
+    }
+    
 }
