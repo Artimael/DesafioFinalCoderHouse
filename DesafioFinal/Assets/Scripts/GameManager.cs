@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static int score;
+    public static int score=0;
     public static int difficult;
 
     public static Queue objetoQueue;
@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    
+    public void addScore(){
+        score++;
+    }
+
+    public int getScore(){
+        return score;
+    }
 
     public void setDifficult(int difficulties){
         Debug.Log("Difficulties: "+difficulties);
@@ -49,7 +57,7 @@ public class GameManager : MonoBehaviour
     }
 
     public int getDifficult(){
-        Debug.Log("difficult: "+difficult);
+        Debug.Log("difficultGet: "+difficult);
         return difficult;
     }
 

@@ -43,11 +43,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            GameManager.instance.addScore();
             transform.position=new Vector3(2f,0.1f,-25f);
         }
 
         if (collision.gameObject.CompareTag("Bala"))
         {
+            GameManager.instance.addScore();
             transform.position=new Vector3(2f,0.1f,-25f);
         }   
 

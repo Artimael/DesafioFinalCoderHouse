@@ -5,18 +5,14 @@ using UnityEngine;
 public class GeneradorEnemyController : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public int difficult;
+    private int dificultad;
     // Start is called before the first frame update
     void Start()
     {
-        int dificultad=0;
-        //InvokeRepeating("spawnEnemy",2.0f,1.5f);
-        if(GameManager.instance!=null){
-        dificultad=GameManager.instance.getDifficult();
-        }
 
+        dificultad=GameManager.instance.getDifficult();
         Debug.Log("Dificultad: "+dificultad);
-        switch(difficult){
+        switch(dificultad){
             case 0://Easy
                 for(int i=0;i<15;i++){
                     spawnEnemy();
