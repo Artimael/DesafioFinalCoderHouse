@@ -10,7 +10,12 @@ public class GeneradorEnemyController : MonoBehaviour
     void Start()
     {
 
+        if(GameManager.instance!=null){
         dificultad=GameManager.instance.getDifficult();
+        }else{
+        dificultad=0;
+        }
+
         Debug.Log("Dificultad: "+dificultad);
         switch(dificultad){
             case 0://Easy

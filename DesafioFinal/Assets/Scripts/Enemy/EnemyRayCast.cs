@@ -2,28 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRayCastController : MonoBehaviour
+public class EnemyRayCast : Enemy
 {
-    [SerializeField] private GameObject shootOrigen;
-    [SerializeField] private float distanceRay = 10f;
-    [SerializeField] private int shootCooldown = 2;
-    [SerializeField] private float timerShoot = 0;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Animator animPlayer;
-    private bool  canShoot = true;
+    public bool isRaycastEnemy;
+    public bool canShoot;
+    public float distanceRay;
+    public int shootCooldown;
+    public float timerShoot;
+    public GameObject bulletPrefab;
+    public Animator animPlayer;
+    public GameObject shootOrigen;
 
     // Start is called before the first frame update
     void Start()
     {
-        animPlayer.SetBool("isShoot", false);
+        if(isRaycastEnemy){
+            animPlayer.SetBool("isShoot", false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isRaycastEnemy){
+            verifyShoot();
+        }
+
+    }
+
+    private void verifyShoot(){
         if (canShoot)
         {
-            RaycastToro();
+            RaycastShoot();
         }
         else
         {
@@ -35,16 +45,14 @@ public class EnemyRayCastController : MonoBehaviour
         if(timerShoot > shootCooldown)
         {
             canShoot = true;
-        }        
+        }  
     }
-
-    private void RaycastToro()
-    {
+    
+    private void RaycastShoot(){
         RaycastHit hit;
         
         if (Physics.Raycast(shootOrigen.transform.position, shootOrigen.transform.TransformDirection(Vector3.forward), out hit, distanceRay))
         {
-            Debug.Log("ACA");
             if(hit.transform.tag == "Player")
             {
                 Debug.Log("COLISION PLAYER");
@@ -68,4 +76,7 @@ public class EnemyRayCastController : MonoBehaviour
         }
 
     }
+
+
+
 }
