@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MetaController : MonoBehaviour
 {
-    [SerializeField] private string pathNext;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +21,7 @@ public class MetaController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(pathNext);
+            SceneManager.LoadScene("Nivel2");
         }
 
     }

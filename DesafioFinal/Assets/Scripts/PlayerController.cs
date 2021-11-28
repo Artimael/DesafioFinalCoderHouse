@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     [SerializeField] private Animator animPlayer;
+    private float xDefaultPosPlayer=-1f;
+    private float yDefaultPosPlayer=4.1f;
+    private float zDefaultPosPlayer=0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,17 +47,17 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GameManager.instance.addScore();
-            transform.position=new Vector3(2f,0.1f,-25f);
+            transform.position=new Vector3(xDefaultPosPlayer,yDefaultPosPlayer,zDefaultPosPlayer);
         }
 
         if (collision.gameObject.CompareTag("Bala"))
         {
             GameManager.instance.addScore();
-            transform.position=new Vector3(2f,0.1f,-25f);
+            transform.position=new Vector3(xDefaultPosPlayer,yDefaultPosPlayer,zDefaultPosPlayer);
         }   
 
         if (collision.gameObject.CompareTag("Piso")){
-            Jump();
+            //Jump();
         }
     }
 

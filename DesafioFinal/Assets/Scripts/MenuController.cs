@@ -20,7 +20,7 @@ public class MenuController : MonoBehaviour
     }
 
     public void escenaJuego(){
-        SceneManager.LoadScene("Nivel1");
+        SceneManager.LoadScene("Nivel1A");
     }
 
     public void salir(){

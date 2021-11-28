@@ -14,14 +14,20 @@ public class Enemy : MonoBehaviour
     private Animator animEnemy;
     [SerializeField] public EnemyData enemyData;
 
+    private float xDefaultPosEnemyMin=-4f;
+    private float xDefaultPosEnemyMax=2f;
+    private float yDefaultPosEnemy=3.9f;
+    private float zDefaultPosEnemyMin=-1f;
+    private float zDefaultPosEnemyMax=28f;
+
     // Start is called before the first frame update
     void Start()
     {
         if(enemyData.isBasicEnemy){
-        transform.position= new Vector3(Random.Range(1f,3f),0.2f,Random.Range(-5f, 15f));
-        xRandomPosEnemy = Random.Range(1f,3f);
-        ZRandomPosEnemy = Random.Range(-5f, 15f);
-        randomVector= new Vector3(xRandomPosEnemy,0,ZRandomPosEnemy);
+        transform.position= new Vector3(Random.Range(xDefaultPosEnemyMin,xDefaultPosEnemyMax),yDefaultPosEnemy,Random.Range(zDefaultPosEnemyMin, zDefaultPosEnemyMax));
+        xRandomPosEnemy = Random.Range(xDefaultPosEnemyMin,xDefaultPosEnemyMax);
+        ZRandomPosEnemy = Random.Range(zDefaultPosEnemyMin, zDefaultPosEnemyMax);
+        randomVector= new Vector3(xRandomPosEnemy,yDefaultPosEnemy,ZRandomPosEnemy);
         }
 
     }
@@ -40,9 +46,9 @@ public class Enemy : MonoBehaviour
             Vector3 direction = (randomVector - transform.position).normalized;
             transform.position+= enemyData.speed * direction * Time.deltaTime;
         }else{
-            xRandomPosEnemy = Random.Range(0f,4f);
-            ZRandomPosEnemy = Random.Range(-5f, 15f);
-            randomVector= new Vector3(xRandomPosEnemy,0,ZRandomPosEnemy);
+            xRandomPosEnemy = Random.Range(xDefaultPosEnemyMin,xDefaultPosEnemyMax);
+            ZRandomPosEnemy = Random.Range(zDefaultPosEnemyMin, zDefaultPosEnemyMax);
+            randomVector= new Vector3(xRandomPosEnemy,yDefaultPosEnemy,ZRandomPosEnemy);
             esDestino=false;
         }
     }
@@ -51,9 +57,9 @@ public class Enemy : MonoBehaviour
         timerEnemy += Time.deltaTime;
         if(timerEnemy > MoveCooldown)
         {
-            xRandomPosEnemy = Random.Range(0f,4f);
-            ZRandomPosEnemy = Random.Range(-5f, 15f);
-            randomVector= new Vector3(xRandomPosEnemy,0,ZRandomPosEnemy);
+            xRandomPosEnemy = Random.Range(xDefaultPosEnemyMin,xDefaultPosEnemyMax);
+            ZRandomPosEnemy = Random.Range(zDefaultPosEnemyMin, zDefaultPosEnemyMax);
+            randomVector= new Vector3(xRandomPosEnemy,yDefaultPosEnemy,ZRandomPosEnemy);
             esDestino=false;
             timerEnemy=0f;
         } 
@@ -65,14 +71,11 @@ public class Enemy : MonoBehaviour
         {
            tiempoColision=tiempoColision+Time.deltaTime;
         } 
-        //Debug.Log("tiempoColision "+tiempoColision);
         if(tiempoColision>2.0f){
             Debug.Log("Colisionaste mas de 2f");
-            xRandomPosEnemy = Random.Range(0f,4f);
-            ZRandomPosEnemy = Random.Range(-5f, 15f);
-            //Debug.Log("xRandomPosEnemy "+xRandomPosEnemy);
-            //Debug.Log("ZRandomPosEnemy "+ZRandomPosEnemy);
-            randomVector= new Vector3(xRandomPosEnemy,0,ZRandomPosEnemy);
+            xRandomPosEnemy = Random.Range(xDefaultPosEnemyMin,xDefaultPosEnemyMax);
+            ZRandomPosEnemy = Random.Range(zDefaultPosEnemyMin, zDefaultPosEnemyMax);
+            randomVector= new Vector3(xRandomPosEnemy,yDefaultPosEnemy,ZRandomPosEnemy);
             esDestino=false;
             tiempoColision=0f;
             
