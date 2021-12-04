@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     [SerializeField] private Animator animPlayer;
-    private float xDefaultPosPlayer=-1f;
-    private float yDefaultPosPlayer=4.1f;
-    private float zDefaultPosPlayer=0f;
+    private Vector3 playerPos;
+
     // Start is called before the first frame update
+
+    //Evento
+    public static event Action onDeath;
+    public static event Action<int> onDeathChange;
+
+
     void Start()
     {
+        playerPos=GameManager.instance.getPlayerPos();
+        //transform.position=playerPos;
+        Debug.Log("playerPos "+playerPos);
+        Debug.Log("transform.position "+transform.position);
         animPlayer.SetBool("isRun", false);
+        onDeathChange?.Invoke(GameManager.instance.getScore());
+        Debug.Log("Probando Start");
     }
 
     // Update is called once per frame
@@ -38,6 +50,11 @@ public class PlayerController : MonoBehaviour
 
         Jump();
 
+        if(GameManager.instance.getScore()>3){
+            Debug.Log("GAME OVER");
+            onDeath?.Invoke();
+        }
+
 
     }
 
@@ -46,14 +63,19 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Aca");
             GameManager.instance.addScore();
-            transform.position=new Vector3(xDefaultPosPlayer,yDefaultPosPlayer,zDefaultPosPlayer);
+            transform.position=playerPos;
+            onDeathChange?.Invoke(GameManager.instance.getScore());
+
         }
 
         if (collision.gameObject.CompareTag("Bala"))
         {
             GameManager.instance.addScore();
-            transform.position=new Vector3(xDefaultPosPlayer,yDefaultPosPlayer,zDefaultPosPlayer);
+            Debug.Log("playerPos: "+playerPos);
+            transform.position=playerPos;
+            onDeathChange?.Invoke(GameManager.instance.getScore());
         }   
 
         if (collision.gameObject.CompareTag("Piso")){

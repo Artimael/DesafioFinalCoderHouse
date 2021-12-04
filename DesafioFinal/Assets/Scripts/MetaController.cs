@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MetaController : MonoBehaviour
 {
+
+    [SerializeField] private string nombreEscena;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,10 @@ public class MetaController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Nivel2");
+            GameManager.instance.setPlayerPos(nombreEscena);
+            GameManager.instance.setEnemyPosMin(nombreEscena);
+            GameManager.instance.setEnemyPosMax(nombreEscena);
+            SceneManager.LoadScene(nombreEscena);
         }
 
     }

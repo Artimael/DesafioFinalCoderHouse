@@ -1,0 +1,34 @@
+{
+    "Niveles":[
+        {
+            "NombreNivel": "Nivel1A",
+            "PlayerPosition":{
+                "xDefaultPosPlayer": -1,
+                "yDefaultPosPlayer": 4.1,
+                "zDefaultPosPlayer": 0
+            },
+            "EnemyPosition":{
+                "xDefaultPosEnemyMin": -4,
+                "xDefaultPosEnemyMax": 2,
+                "yDefaultPosEnemy": 3.9,
+                "zDefaultPosEnemyMin": -1,
+                "zDefaultPosEnemyMax": 28              
+            }
+        },
+        {
+            "NombreNivel": "Nivel2",
+            "PlayerPosition":{
+                "xDefaultPosPlayer": -0.8,
+                "yDefaultPosPlayer": 0.2,
+                "zDefaultPosPlayer": 30
+            },
+            "EnemyPosition":{
+                "xDefaultPosEnemyMin": -5,
+                "xDefaultPosEnemyMax": 4,
+                "yDefaultPosEnemy": 0.2,
+                "zDefaultPosEnemyMin": -21,
+                "zDefaultPosEnemyMax": 17              
+            }
+        }
+    ]
+}

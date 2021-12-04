@@ -20,7 +20,17 @@ public class MenuController : MonoBehaviour
     }
 
     public void escenaJuego(){
+        GameManager.instance.setPlayerPos("Nivel1A");
+        GameManager.instance.setEnemyPosMin("Nivel1A");
+        GameManager.instance.setEnemyPosMax("Nivel1A");
         SceneManager.LoadScene("Nivel1A");
+    }
+
+    public void goToEscena2(){
+        GameManager.instance.setPlayerPos("Nivel2");
+        GameManager.instance.setEnemyPosMin("Nivel2");
+        GameManager.instance.setEnemyPosMax("Nivel2");
+        SceneManager.LoadScene("Nivel2");
     }
 
     public void salir(){
