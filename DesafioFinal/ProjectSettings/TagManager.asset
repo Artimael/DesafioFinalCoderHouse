@@ -9,6 +9,7 @@ TagManager:
   - Piso
   - Bala
   - Meta
+  - Item
   layers:
   - Default
   - TransparentFX

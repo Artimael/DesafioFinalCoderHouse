@@ -32,10 +32,12 @@ public class HUDController : MonoBehaviour
     }
 
     private void onDeadHandler(){
-        textGameOver.text="GAME OVER OVER";
+        Debug.Log("Evento Texto GameOver");
+        textGameOver.text="GAME OVER";
     }
 
     private void onDeathHandler(int deads){
+        Debug.Log("Evento Actualizar Contador");
         textMuertes.text="Muertes: "+deads;
     }
 }

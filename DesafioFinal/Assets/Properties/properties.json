@@ -19,13 +19,13 @@
             "NombreNivel": "Nivel2",
             "PlayerPosition":{
                 "xDefaultPosPlayer": -0.8,
-                "yDefaultPosPlayer": 0.2,
-                "zDefaultPosPlayer": 30
+                "yDefaultPosPlayer": -0.1,
+                "zDefaultPosPlayer": -24
             },
             "EnemyPosition":{
                 "xDefaultPosEnemyMin": -5,
                 "xDefaultPosEnemyMax": 4,
-                "yDefaultPosEnemy": 0.2,
+                "yDefaultPosEnemy": 0.1,
                 "zDefaultPosEnemyMin": -21,
                 "zDefaultPosEnemyMax": 17              
             }

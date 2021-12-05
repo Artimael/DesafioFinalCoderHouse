@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     //Evento
     public static event Action onDeath;
     public static event Action<int> onDeathChange;
+    public static event Action<float> onBuff;
 
 
     void Start()
@@ -59,6 +60,15 @@ public class PlayerController : MonoBehaviour
     }
 
     
+
+
+    private void OnTriggerEnter(Collider other) {
+         if (other.gameObject.CompareTag("Item")){
+            onBuff?.Invoke(speed);
+        }       
+    }
+
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -78,6 +88,8 @@ public class PlayerController : MonoBehaviour
             onDeathChange?.Invoke(GameManager.instance.getScore());
         }   
 
+
+
         if (collision.gameObject.CompareTag("Piso")){
             //Jump();
         }
@@ -88,6 +100,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Saltando");
             GetComponent<Rigidbody>().AddForce(Vector2.up* 100f);
         }
+    }
+
+    public void setSpeed(float newSpeed){
+        speed=newSpeed;
+    }
+
+
+    public float getSpeed(){
+        return speed;
     }
 
 }

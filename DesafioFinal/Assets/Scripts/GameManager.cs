@@ -28,10 +28,8 @@ public class GameManager : MonoBehaviour
 
         string saveFile = Application.dataPath +"/Properties/properties.json";
         Debug.Log("saveFile: "+saveFile);
-        // Does it exist?
         if(File.Exists(saveFile))
         {
-        // File exists!
             Debug.Log("Archivo existe");
             string jsonString = File.ReadAllText(saveFile); 
             print(jsonString);
@@ -58,7 +56,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerController.onDeath +=GameOver;//suscribirte al evento
         //PlayerController.onDeath -=GameOver;//dessuscribirte al evento
     }
 
@@ -133,11 +130,6 @@ public class GameManager : MonoBehaviour
         return enemyPosMax;
     }
 
-    private void GameOver(){
-        score=0;
-        Debug.Log("El juego termino");      
-    }
-
     public void addScore(){
         score++;
     }
@@ -156,6 +148,8 @@ public class GameManager : MonoBehaviour
         return difficult;
     }
 
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////INVENTARIO////////////////////////////////////////////////////////////////////////////////////
     public void AddObjeto(GameObject objeto)
     {
         objetoQueue.Enqueue(objeto);
