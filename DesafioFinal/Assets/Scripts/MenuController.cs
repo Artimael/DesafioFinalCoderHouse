@@ -33,6 +33,13 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("Nivel2");
     }
 
+    public void goToEscena3(){
+        GameManager.instance.setPlayerPos("Nivel3");
+        GameManager.instance.setEnemyPosMin("Nivel3");
+        GameManager.instance.setEnemyPosMax("Nivel3");
+        SceneManager.LoadScene("Nivel3");
+    }
+
     public void salir(){
         Application.Quit();
     }

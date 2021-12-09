@@ -41,7 +41,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - GoblalPostProcessing
   - 
   m_SortingLayers:
   - name: Default

@@ -15,10 +15,14 @@ public class PlayerController : MonoBehaviour
     public static event Action onDeath;
     public static event Action<int> onDeathChange;
     public static event Action<float> onBuff;
+    public static event Action<bool> onDamageChange;
+    private bool isDamaged;
+    private float timeRedScreen= 0f;
 
 
     void Start()
     {
+        isDamaged=false;
         playerPos=GameManager.instance.getPlayerPos();
         //transform.position=playerPos;
         Debug.Log("playerPos "+playerPos);
@@ -32,7 +36,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movePlayer();
-        //RotatePlayer();
+        if(isDamaged=true){
+            timeRedScreen=timeRedScreen+Time.deltaTime;
+            if(timeRedScreen>1.0f){
+                isDamaged=false;
+                onDamageChange?.Invoke(false);
+                timeRedScreen=0f;
+            }
+        }
     }
 
     void movePlayer(){
@@ -73,19 +84,21 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Aca");
+            onDamageChange?.Invoke(true);
             GameManager.instance.addScore();
             transform.position=playerPos;
             onDeathChange?.Invoke(GameManager.instance.getScore());
-
+            isDamaged=true;
         }
 
         if (collision.gameObject.CompareTag("Bala"))
         {
+            onDamageChange?.Invoke(true);            
             GameManager.instance.addScore();
             Debug.Log("playerPos: "+playerPos);
             transform.position=playerPos;
-            onDeathChange?.Invoke(GameManager.instance.getScore());
+            onDeathChange?.Invoke(GameManager.instance.getScore());  
+            isDamaged=true;         
         }   
 
 

@@ -13,6 +13,8 @@ public class EnemyRayCast : Enemy
     public Animator animPlayer;
     public GameObject shootOrigen;
 
+    [SerializeField] private ParticleSystem shootParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class EnemyRayCast : Enemy
                 Debug.Log("COLISION PLAYER");
                 canShoot   = false;
                 timerShoot = 0;
+                shootParticle.Play();
                 GameObject b = Instantiate(bulletPrefab, shootOrigen.transform.position, bulletPrefab.transform.rotation);
                 b.GetComponent<Rigidbody>().AddForce(shootOrigen.transform.TransformDirection(Vector3.forward) * 10f, ForceMode.Impulse);
                 animPlayer.SetBool("isShoot", true);

@@ -5,7 +5,7 @@
             "PlayerPosition":{
                 "xDefaultPosPlayer": -1,
                 "yDefaultPosPlayer": 4.1,
-                "zDefaultPosPlayer": 0
+                "zDefaultPosPlayer": -3
             },
             "EnemyPosition":{
                 "xDefaultPosEnemyMin": -4,
@@ -21,6 +21,21 @@
                 "xDefaultPosPlayer": -0.8,
                 "yDefaultPosPlayer": -0.1,
                 "zDefaultPosPlayer": -24
+            },
+            "EnemyPosition":{
+                "xDefaultPosEnemyMin": -5,
+                "xDefaultPosEnemyMax": 4,
+                "yDefaultPosEnemy": 0.1,
+                "zDefaultPosEnemyMin": -21,
+                "zDefaultPosEnemyMax": 17              
+            }
+        },
+        {
+            "NombreNivel": "Nivel3",
+            "PlayerPosition":{
+                "xDefaultPosPlayer": -2,
+                "yDefaultPosPlayer": -1,
+                "zDefaultPosPlayer": -32
             },
             "EnemyPosition":{
                 "xDefaultPosEnemyMin": -5,

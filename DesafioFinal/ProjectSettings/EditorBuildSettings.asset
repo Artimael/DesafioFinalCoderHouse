@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Inventario.unity
     guid: 06c4049be8270544aa36f084400fd70c
+  - enabled: 1
+    path: Assets/Scenes/Nivel3.unity
+    guid: d29e8b9f1f6d990468e78bd84c0a450f
   m_configObjects: {}
