@@ -16,7 +16,7 @@ public class HUDController : MonoBehaviour
 
     void Start()
     {
-      textMuertes.text="Muertes: 0";  
+      textMuertes.text="Muertes: "+GameManager.instance.getScore();  
       PlayerController.onDeath+= onDeadHandler;
     }
 

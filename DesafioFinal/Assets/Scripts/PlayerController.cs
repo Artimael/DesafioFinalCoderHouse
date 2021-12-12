@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     [SerializeField] private Animator animPlayer;
+    [SerializeField] private float cameraAxisX = -90f;
     private Vector3 playerPos;
 
     // Start is called before the first frame update
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public static event Action<bool> onDamageChange;
     private bool isDamaged;
     private float timeRedScreen= 0f;
-
 
     void Start()
     {
@@ -35,8 +35,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rotatePlayer();
         movePlayer();
-        if(isDamaged=true){
+        if(isDamaged){
             timeRedScreen=timeRedScreen+Time.deltaTime;
             if(timeRedScreen>1.0f){
                 isDamaged=false;
@@ -51,6 +52,9 @@ public class PlayerController : MonoBehaviour
         float ejeVertical = Input.GetAxisRaw("Vertical");
 
         if (ejeHorizontal != 0 || ejeVertical != 0) {
+
+
+
             animPlayer.SetBool("isRun", true);
             Vector3 direction = new Vector3(ejeHorizontal, 0, ejeVertical);
             transform.Translate(speed * Time.deltaTime * direction);
@@ -70,8 +74,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
 
+    private void rotatePlayer()
+    {
+        cameraAxisX += Input.GetAxis("Mouse X");
+        Quaternion angulo   = Quaternion.Euler(0, cameraAxisX, 0);
+        transform.rotation = angulo;
+    }
 
     private void OnTriggerEnter(Collider other) {
          if (other.gameObject.CompareTag("Item")){

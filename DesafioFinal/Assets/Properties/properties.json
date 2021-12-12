@@ -33,16 +33,16 @@
         {
             "NombreNivel": "Nivel3",
             "PlayerPosition":{
-                "xDefaultPosPlayer": -2,
-                "yDefaultPosPlayer": -1,
-                "zDefaultPosPlayer": -32
+                "xDefaultPosPlayer": -1.5,
+                "yDefaultPosPlayer": 2.5,
+                "zDefaultPosPlayer": -45
             },
             "EnemyPosition":{
                 "xDefaultPosEnemyMin": -5,
-                "xDefaultPosEnemyMax": 4,
-                "yDefaultPosEnemy": 0.1,
-                "zDefaultPosEnemyMin": -21,
-                "zDefaultPosEnemyMax": 17              
+                "xDefaultPosEnemyMax": 1,
+                "yDefaultPosEnemy": 2.5,
+                "zDefaultPosEnemyMin": -42,
+                "zDefaultPosEnemyMax": -5              
             }
         }
     ]

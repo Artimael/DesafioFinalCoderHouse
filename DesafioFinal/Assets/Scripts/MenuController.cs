@@ -50,27 +50,15 @@ public class MenuController : MonoBehaviour
     }
 
     public void setDificultadFacil(){
-        GameManager.instance.setDifficult(0);
-        canvasDificultad.SetActive(false);
-        canvasMenuPrincipal.SetActive(true);        
+        GameManager.instance.setDifficult(0);     
     }
 
     public void setDificultadMedio(){
-        GameManager.instance.setDifficult(1);    
-        canvasDificultad.SetActive(false);
-        canvasMenuPrincipal.SetActive(true);   
+        GameManager.instance.setDifficult(1);      
     }
 
     public void setDificultadDificl(){
-        GameManager.instance.setDifficult(2);  
-        canvasDificultad.SetActive(false);
-        canvasMenuPrincipal.SetActive(true);     
+        GameManager.instance.setDifficult(2);      
     }
-
-    public void regresar(){
-        canvasDificultad.SetActive(false);
-        canvasMenuPrincipal.SetActive(true);
-    }
-
     
 }
