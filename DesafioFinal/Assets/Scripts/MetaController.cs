@@ -26,11 +26,16 @@ public class MetaController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            image.enabled=true;
-            GameManager.instance.setPlayerPos(nombreEscena);
-            GameManager.instance.setEnemyPosMin(nombreEscena);
-            GameManager.instance.setEnemyPosMax(nombreEscena);
-            SceneManager.LoadScene(nombreEscena);
+            if(!nombreEscena.Equals("Creditos")){
+                image.enabled=true;
+                GameManager.instance.setPlayerPos(nombreEscena);
+                GameManager.instance.setEnemyPosMin(nombreEscena);
+                GameManager.instance.setEnemyPosMax(nombreEscena);
+                SceneManager.LoadScene(nombreEscena);
+            }else{
+                SceneManager.LoadScene(nombreEscena);               
+            }
+
         }
 
     }
