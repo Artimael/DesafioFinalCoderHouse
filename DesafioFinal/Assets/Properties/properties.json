@@ -25,7 +25,7 @@
             "EnemyPosition":{
                 "xDefaultPosEnemyMin": -5,
                 "xDefaultPosEnemyMax": 4,
-                "yDefaultPosEnemy": 0.1,
+                "yDefaultPosEnemy": -0.295,
                 "zDefaultPosEnemyMin": -21,
                 "zDefaultPosEnemyMax": 17              
             }

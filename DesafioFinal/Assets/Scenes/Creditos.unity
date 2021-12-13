@@ -250,7 +250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57.5428, y: 2.6602}
+  m_AnchoredPosition: {x: -189, y: 2.6602}
   m_SizeDelta: {x: 315.0856, y: 44.6795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &576546009
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Gracias por Jugar
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -546.2938, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 761477887}
   - component: {fileID: 761477886}
   - component: {fileID: 761477885}
+  - component: {fileID: 761477889}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -450,6 +451,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &761477889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761477884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05b82e8363cdd84fbf869a6ff8a8b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textCreditos: {fileID: 576546009}
 --- !u!1 &1037382291
 GameObject:
   m_ObjectHideFlags: 0

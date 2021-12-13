@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static int score=0;
+    public static int scoreTotal=0;
     public static int difficult;
 
     public static Queue objetoQueue;
@@ -136,6 +137,14 @@ public class GameManager : MonoBehaviour
 
     public int getScore(){
         return score;
+    }
+
+    public void addScoreTotal(){
+        scoreTotal++;
+    }
+
+    public int getScoreTotal(){
+        return scoreTotal;
     }
 
     public void setDifficult(int difficulties){

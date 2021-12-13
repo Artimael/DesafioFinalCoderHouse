@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if(GameManager.instance.getScore()>3){
             Debug.Log("GAME OVER");
             onDeath?.Invoke();
+            Destroy(gameObject);
         }
 
 
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             onDamageChange?.Invoke(true);
             GameManager.instance.addScore();
+            GameManager.instance.addScoreTotal();
             transform.position=playerPos;
             onDeathChange?.Invoke(GameManager.instance.getScore());
             isDamaged=true;
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
         {
             onDamageChange?.Invoke(true);            
             GameManager.instance.addScore();
+            GameManager.instance.addScoreTotal();
             Debug.Log("playerPos: "+playerPos);
             transform.position=playerPos;
             onDeathChange?.Invoke(GameManager.instance.getScore());  
