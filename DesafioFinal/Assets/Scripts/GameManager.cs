@@ -135,6 +135,10 @@ public class GameManager : MonoBehaviour
         score++;
     }
 
+    public void setScore(int newScore){
+        score=newScore;
+    }
+
     public int getScore(){
         return score;
     }

@@ -6,7 +6,7 @@ using TMPro;
 
 public class CreditosController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textCreditos;
+    [SerializeField] private Text textCreditos;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,9 @@ public class CreditosController : MonoBehaviour
             textCreditos.text="Te has muerto :"+GameManager.instance.getScoreTotal()+" veces";
         }
 
+            //GameManager.instance.GetObjeto();
+
+            textCreditos.text=textCreditos.text+"\n Ademaas has usado";
     }
 
     // Update is called once per frame

@@ -39,6 +39,10 @@ public class MenuController : MonoBehaviour
         GameManager.instance.setEnemyPosMax("Nivel3");
         SceneManager.LoadScene("Nivel3");
     }
+ 
+    public void goToEscenaCreditos(){
+        SceneManager.LoadScene("Creditos");
+    }
 
     public void salir(){
         Application.Quit();

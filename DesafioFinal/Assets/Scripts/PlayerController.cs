@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     //Evento
     public static event Action onDeath;
     public static event Action<int> onDeathChange;
-    public static event Action<float> onBuff;
+    public static event Action<string> onBuff;
     public static event Action<bool> onDamageChange;
     private bool isDamaged;
     private float timeRedScreen= 0f;
@@ -76,8 +76,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void rotatePlayer()
-    {
+    private void rotatePlayer(){
         cameraAxisX += Input.GetAxis("Mouse X");
         Quaternion angulo   = Quaternion.Euler(0, cameraAxisX, 0);
         transform.rotation = angulo;
@@ -85,7 +84,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
          if (other.gameObject.CompareTag("Item")){
-            onBuff?.Invoke(speed);
+             string itemName= other.gameObject.name;
+            if(itemName.Equals("Star")){
+                onBuff?.Invoke("Speed");
+            }else if(itemName.Equals("Shield")){
+                onBuff?.Invoke("Life");
+            }else if(itemName.Equals("HourGlass")){
+                onBuff?.Invoke("Time");
+            }
+
+
         }       
     }
 
