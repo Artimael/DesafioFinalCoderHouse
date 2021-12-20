@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     //Evento
     public static event Action onDeath;
     public static event Action<int> onDeathChange;
-    public static event Action<string> onBuff;
     public static event Action<bool> onDamageChange;
     private bool isDamaged;
     private float timeRedScreen= 0f;
@@ -82,20 +81,6 @@ public class PlayerController : MonoBehaviour
         transform.rotation = angulo;
     }
 
-    private void OnTriggerEnter(Collider other) {
-         if (other.gameObject.CompareTag("Item")){
-             string itemName= other.gameObject.name;
-            if(itemName.Equals("Star")){
-                onBuff?.Invoke("Speed");
-            }else if(itemName.Equals("Shield")){
-                onBuff?.Invoke("Life");
-            }else if(itemName.Equals("HourGlass")){
-                onBuff?.Invoke("Time");
-            }
-
-
-        }       
-    }
 
     
     private void OnCollisionEnter(Collision collision)

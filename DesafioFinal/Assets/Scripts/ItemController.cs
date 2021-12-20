@@ -9,12 +9,12 @@ public class ItemController : MonoBehaviour
     [SerializeField] private ObjectManager ObjectManager;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Image imageBuff;
+    [SerializeField] private string buffString;
     private float buffSpeed=1.0f;
     private int buffLife=1; 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerController.onBuff+= onBuffHandler;
     }
 
     // Update is called once per frame
@@ -24,32 +24,36 @@ public class ItemController : MonoBehaviour
 
     }
 
-    private void onBuffHandler(string buffString){
-       Debug.Log("Evento buffString "+buffString);
-        if(buffString.Equals("Speed")){
-            Debug.Log("Evento Buff Speed");
-            GameObject Player=GameObject.FindWithTag("Player");
-            float newSpeed=Player.GetComponent<PlayerController>().getSpeed()+buffSpeed;
-            Player.GetComponent<PlayerController>().setSpeed(newSpeed);
-            gameObject.SetActive(false);
-            imageBuff.gameObject.SetActive(true);
-            GameManager.instance.AddObjeto(gameObject);
+    private void OnTriggerEnter(Collider other) {
+         if (other.tag=="Player"){
+             GameObject Player=other.gameObject;
+            if(buffString.Equals("Speed")){
+                Debug.Log("Evento Buff Speed");
+                float newSpeed=Player.GetComponent<PlayerController>().getSpeed()+buffSpeed;
+                Player.GetComponent<PlayerController>().setSpeed(newSpeed);
+                gameObject.SetActive(false);
+                imageBuff.gameObject.SetActive(true);
+                GameManager.instance.AddObjeto(gameObject);
 
-        } else if(buffString.Equals("Life")){
-            Debug.Log("Evento Buff Life");
-            GameObject Player=GameObject.FindWithTag("Player");
-            int scoreActual=GameManager.instance.getScore();
-            int nuevaScore= scoreActual - buffLife;
-            GameManager.instance.setScore(nuevaScore);
-            gameObject.SetActive(false);
-            imageBuff.gameObject.SetActive(true);
-            GameManager.instance.AddObjeto(gameObject);
-        } else if(buffString.Equals("Time")){
-            Debug.Log("Evento Buff Time"); 
+            } else if(buffString.Equals("Life")){
+                Debug.Log("Evento Buff Life");
+                gameObject.SetActive(false);
+                imageBuff.gameObject.SetActive(true);
+                int scoreActual=GameManager.instance.getScore();
+                int nuevaScore= scoreActual - buffLife;
+                GameManager.instance.setScore(nuevaScore);
+                GameManager.instance.AddObjeto(gameObject);
+
+            } else if(buffString.Equals("Time")){
+                Debug.Log("Evento Buff Time");
+                gameObject.SetActive(false);
+                imageBuff.gameObject.SetActive(true);           
+            }  
         }
-
-
+     
+    
     }
+
 
     private void OnMouseDown()
     {

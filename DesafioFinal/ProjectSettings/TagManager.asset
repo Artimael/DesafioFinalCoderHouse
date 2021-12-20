@@ -38,9 +38,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - ItemStar
+  - ItemLife
+  - ItemTime
   - GoblalPostProcessing
   - 
   m_SortingLayers:
