@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     private Vector3 enemyPosMin;
     private Vector3 enemyPosMax;
 
+    private bool flagBuffTime= true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,9 +43,16 @@ public class Enemy : MonoBehaviour
     }
 
     private void moveEnemy(){
+
+        float speedEnemy=enemyData.speed;
+        if(GameManager.instance.getSpeedBuffEnemy() && flagBuffTime ){
+            speedEnemy=speedEnemy-1f;
+            flagBuffTime=false;
+            Debug.Log("Disminuye Velocidad");
+        }
         if(!esDestino){
             Vector3 direction = (randomVector - transform.position).normalized;
-            transform.position+= enemyData.speed * direction * Time.deltaTime;
+            transform.position+= speedEnemy * direction * Time.deltaTime;
         }else{
             xRandomPosEnemy = Random.Range(enemyPosMin.x,enemyPosMax.x);
             ZRandomPosEnemy = Random.Range(enemyPosMin.z,enemyPosMax.z);

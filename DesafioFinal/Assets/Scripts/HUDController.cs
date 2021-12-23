@@ -28,6 +28,7 @@ public class HUDController : MonoBehaviour
         Debug.Log("Defaulto text: "+textMuertes);
         Debug.Log("Defaulto text: "+textMuertes.text);
         PlayerController.onDeathChange+= onDeathHandler;   
+        ItemController.onDeathChange+=onDeathHandler;
         Debug.Log("Awake Hub");
     }
 
@@ -36,6 +37,7 @@ public class HUDController : MonoBehaviour
       Debug.Log("Start Hub");
       textMuertes.text="Muertes: "+GameManager.instance.getScore();
       PlayerController.onDeath+= onDeadHandler;
+
     }
 
     // Update is called once per frame
@@ -64,4 +66,7 @@ public class HUDController : MonoBehaviour
         Debug.Log("Evento Actualizar Contador");
         textMuertes.text="Muertes: "+deads;
     }
+
+    
+
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ItemController : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class ItemController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Image imageBuff;
     [SerializeField] private string buffString;
+
     private float buffSpeed=1.0f;
     private int buffLife=1; 
+    public static event Action<int> onDeathChange;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,11 +46,13 @@ public class ItemController : MonoBehaviour
                 int nuevaScore= scoreActual - buffLife;
                 GameManager.instance.setScore(nuevaScore);
                 GameManager.instance.AddObjeto(gameObject);
+                onDeathChange?.Invoke(GameManager.instance.getScore());  
 
             } else if(buffString.Equals("Time")){
                 Debug.Log("Evento Buff Time");
                 gameObject.SetActive(false);
-                imageBuff.gameObject.SetActive(true);           
+                imageBuff.gameObject.SetActive(true);  
+                GameManager.instance.setSpeedBuffEnemy(true);         
             }  
         }
      

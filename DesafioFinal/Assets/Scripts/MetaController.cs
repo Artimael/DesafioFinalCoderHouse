@@ -11,7 +11,10 @@ public class MetaController : MonoBehaviour
 {
 
     [SerializeField] private string nombreEscena;
-    [SerializeField] private Image image;
+    [SerializeField] private Image imageFadeIn;
+    [SerializeField] private Image imageSpeed;
+    [SerializeField] private Image imageLife;
+    [SerializeField] private Image imageShield;
 
     // Start is called before the first frame update
     void Start()
@@ -30,18 +33,21 @@ public class MetaController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
 
-                image.gameObject.SetActive(true);
+                //
 
             if(!nombreEscena.Equals("Creditos")){
-                //image.gameObject.SetActive(true);
-
+                imageFadeIn.gameObject.SetActive(true);
+                imageSpeed.gameObject.SetActive(false);
+                imageLife.gameObject.SetActive(false);
+                imageShield.gameObject.SetActive(false);
                 GameManager.instance.setPlayerPos(nombreEscena);
                 GameManager.instance.setEnemyPosMin(nombreEscena);
                 GameManager.instance.setEnemyPosMax(nombreEscena);
                 
                //StartCoroutine(LoadLevelAsync(nombreEscena));
             }else{
-               // StartCoroutine(LoadLevelAsync(nombreEscena));              
+               // StartCoroutine(LoadLevelAsync(nombreEscena));  
+               imageFadeIn.gameObject.SetActive(true);          
             }
 
         }

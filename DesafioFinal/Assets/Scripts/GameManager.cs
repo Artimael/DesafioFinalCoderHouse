@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static Vector3 playerPos;
     public static Vector3 enemyPosMin;
     public static Vector3 enemyPosMax;
+    public static bool speedBuffEnemy=false;
 
     private void Awake()
     {
@@ -147,6 +148,10 @@ public class GameManager : MonoBehaviour
         scoreTotal++;
     }
 
+        public void setScoreTotal(int newScoreTotal){
+        scoreTotal=newScoreTotal;
+    }
+
     public int getScoreTotal(){
         return scoreTotal;
     }
@@ -161,25 +166,28 @@ public class GameManager : MonoBehaviour
         return difficult;
     }
 
+    public void setSpeedBuffEnemy( bool newSpeedBuffEnemy){
+        speedBuffEnemy=newSpeedBuffEnemy;
+    }
+
+  public bool getSpeedBuffEnemy(){
+        return speedBuffEnemy;
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////INVENTARIO////////////////////////////////////////////////////////////////////////////////////
-    public void AddObjeto(GameObject objeto)
-    {
+    public void AddObjeto(GameObject objeto){
         objetoQueue.Enqueue(objeto);
     }
 
-    public GameObject GetObjeto()
-    {
+    public GameObject GetObjeto(){
         return objetoQueue.Dequeue() as GameObject;
     }
 
-    public void AddDictionary(string key, GameObject objeto)
-    {
+    public void AddDictionary(string key, GameObject objeto){
         objetoDictionary.Add(key, objeto);
     }
 
-    public GameObject GetObjetoDictonary(string key)
-    {
+    public GameObject GetObjetoDictonary(string key){
         return objetoDictionary[key];
     }
 
@@ -188,8 +196,7 @@ public class GameManager : MonoBehaviour
         indexObjetoArray++;        
     }
 
-        public GameObject GetObjetoArray(int index)
-    {
+    public GameObject GetObjetoArray(int index){
         return objetoArray[index];
     }
     
