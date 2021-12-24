@@ -37,6 +37,7 @@ public class ItemController : MonoBehaviour
                 gameObject.SetActive(false);
                 imageBuff.gameObject.SetActive(true);
                 GameManager.instance.AddObjeto(gameObject);
+                GameManager.instance.setUseBuff(true);
 
             } else if(buffString.Equals("Life")){
                 Debug.Log("Evento Buff Life");
@@ -46,13 +47,16 @@ public class ItemController : MonoBehaviour
                 int nuevaScore= scoreActual - buffLife;
                 GameManager.instance.setScore(nuevaScore);
                 GameManager.instance.AddObjeto(gameObject);
-                onDeathChange?.Invoke(GameManager.instance.getScore());  
+                onDeathChange?.Invoke(GameManager.instance.getScore()); 
+                GameManager.instance.setUseBuff(true); 
 
             } else if(buffString.Equals("Time")){
                 Debug.Log("Evento Buff Time");
                 gameObject.SetActive(false);
                 imageBuff.gameObject.SetActive(true);  
-                GameManager.instance.setSpeedBuffEnemy(true);         
+                GameManager.instance.setSpeedBuffEnemy(true);  
+                GameManager.instance.setUseBuff(true); 
+                GameManager.instance.AddObjeto(gameObject);      
             }  
         }
      
@@ -63,7 +67,7 @@ public class ItemController : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("CLICKED "+gameObject.name);
-        GameManager.instance.addObjetoArray(gameObject);
+        //GameManager.instance.addObjetoArray(gameObject);
         GameManager.instance.AddDictionary(gameObject.name, gameObject);
         GameManager.instance.AddObjeto(gameObject);
         Debug.Log("indexObjetoArray: "+GameManager.indexObjetoArray);

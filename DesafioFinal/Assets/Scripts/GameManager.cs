@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public static Vector3 enemyPosMin;
     public static Vector3 enemyPosMax;
     public static bool speedBuffEnemy=false;
+    public static bool useBuff=false;
 
     private void Awake()
     {
@@ -172,6 +173,14 @@ public class GameManager : MonoBehaviour
 
   public bool getSpeedBuffEnemy(){
         return speedBuffEnemy;
+    }
+
+  public void setUseBuff( bool newUseBuff){
+        useBuff=newUseBuff;
+    }
+
+  public bool getUseBuff(){
+        return useBuff;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////INVENTARIO////////////////////////////////////////////////////////////////////////////////////
