@@ -21,28 +21,19 @@ public class GameManager : MonoBehaviour
     public static Vector3 enemyPosMax;
     public static bool speedBuffEnemy=false;
     public static bool useBuff=false;
+    public TextAsset File;
+
 
     private void Awake()
     {
         objetoQueue = new Queue();
         objetoDictionary = new Dictionary<string, GameObject>();
         objetoArray = new GameObject[4];
+        File = Resources.Load<TextAsset>("properties");
+        string jsonString = File.text;
+        print(jsonString);
+        listaNiveles = JsonUtility.FromJson<ListaNiveles> (jsonString);
 
-
-        string saveFile = Application.dataPath +"/Properties/properties.json";
-        Debug.Log("saveFile: "+saveFile);
-        if(File.Exists(saveFile))
-        {
-            Debug.Log("Archivo existe");
-            string jsonString = File.ReadAllText(saveFile); 
-            print(jsonString);
-            listaNiveles = JsonUtility.FromJson<ListaNiveles> (jsonString);
-
-        }
-        else
-        {
-            Debug.Log("No Archivo existe");
-        }
 
         if(instance == null)
         {
