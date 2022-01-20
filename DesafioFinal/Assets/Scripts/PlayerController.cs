@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
                 timeRedScreen=0f;
             }
         }
+
+
+
     }
 
     void movePlayer(){

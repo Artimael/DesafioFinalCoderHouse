@@ -10,7 +10,8 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Text textMuertes;
     [SerializeField] private TextMeshProUGUI textGameOver;
     private HUDController instance;
-    
+    private bool isDead=false;
+
     private void Awake() {
 
         if(instance == null)
@@ -44,6 +45,17 @@ public class HUDController : MonoBehaviour
     void Update()
     {
         //UpdateMuerteUI();
+
+        if (Input.GetKeyDown(KeyCode.Escape) && isDead)
+        {
+            GameObject canvasHud = GameObject.Find("Canvas HUD");
+            canvasHud.SetActive(false);
+            GameManager.instance.goToEscenaMainMenu();
+            GameManager.instance.setScore(0);
+            GameManager.instance.setScoreTotal(0);
+            textMuertes.text="";
+        }
+
     }
 
     void UpdateMuerteUI(){
@@ -53,7 +65,9 @@ public class HUDController : MonoBehaviour
 
     private void onDeadHandler(){
         Debug.Log("Evento Texto GameOver");
-        textGameOver.text="GAME OVER";
+        textGameOver.text="GAME OVER\n Presiona Esc para reiniciar el juego";
+        isDead=true;
+           
     }
 
     private void onDeathHandler(int deads){
